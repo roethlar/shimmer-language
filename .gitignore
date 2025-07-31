@@ -93,3 +93,5 @@ site/
 *.tmp
 *.temp
 *.bak
+
+traffic_cop.py
