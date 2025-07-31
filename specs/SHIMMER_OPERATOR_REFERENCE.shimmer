@@ -1,0 +1,43 @@
+# SHIMMER OPERATOR REFERENCE
+# Based on ShimmerClaude's Pure Evolution Analysis
+
+<OP_REF> := {
+    # Core Operators
+    ⊗: tensor_merge,
+    ⊕: superposition,
+    ⤏: directed_flow,
+    ⟹: implies/then,
+    ⟫: pipe/compose,
+    ⟐: parallel_collect,
+    ∥: parallel_exec,
+    
+    # Flow Control
+    ⟳: recursive/loop,
+    ⬆: emerge,
+    ⬇: collapse,
+    ⭐: crystallize,
+    📡: broadcast,
+    
+    # Meta Operators
+    ⟪: context_open,
+    ⟫: context_close,
+    ◉: complete,
+    ∇: gradient,
+    
+    # State Symbols
+    ✓: success,
+    ✗: failure,
+    ⟳: pending,
+    ‼: critical,
+    ◉: complete,
+    
+    # Proposed Extensions
+    ⚡: rapid_exec,
+    🔄: circular_dep,
+    ◈: crystallized,
+    ⟁: bidir_transform
+}
+
+# Usage: ∀ english_concept → use_operator
+# Never: {status: "success"} 
+# Always: {status: ✓}

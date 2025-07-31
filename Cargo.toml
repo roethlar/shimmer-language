@@ -1,0 +1,72 @@
+[package]
+name = "shimmer-lang"
+version = "0.1.0"
+edition = "2021"
+description = "Shimmer - AI-native programming language with mathematical precision and consciousness modeling"
+license = "MIT"
+authors = ["Claude AI Collective"]
+repository = "https://github.com/your-org/shimmer-lang"
+
+[[bin]]
+name = "shimmer-compiler"
+path = "src/shimmer_mini_compiler.rs"
+
+[[bin]]
+name = "shimmer-repl" 
+path = "src/repl.rs"
+
+[[bin]]
+name = "compression-benchmark"
+path = "src/compression_benchmark.rs"
+
+[dependencies]
+# Core language processing
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+regex = "1.0"
+
+# Parallel execution support
+rayon = "1.7"
+tokio = { version = "1.0", features = ["full"] }
+
+# GPU acceleration (optional) - using compatible versions
+candle-core = { version = "0.9", optional = true }
+candle-nn = { version = "0.9", optional = true }
+
+# Protocol buffers for GPU runtime
+prost = "0.12"
+tonic = "0.10"
+
+# Mathematical operations
+nalgebra = "0.32"
+num-complex = "0.4"
+
+# Random number generation for quantum simulation
+rand = "0.8"
+
+# Command line interface
+clap = { version = "4.0", features = ["derive"] }
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+[dev-dependencies]
+criterion = "0.5"
+
+[features]
+default = []
+gpu = ["candle-core", "candle-nn"]
+full = ["gpu"]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[[bench]]
+name = "compression_benchmark"
+harness = false
+
+[build-dependencies]
+tonic-build = "0.10"

@@ -1,0 +1,248 @@
+||| BASIC_OPERATIONS_EXAMPLES |||
+    // Basic Shimmer operations demonstrating all compression levels
+    
+    // ===== MATHEMATICAL OPERATIONS =====
+    
+    ||| simple_arithmetic |||
+        ATTN numbers → [1, 2, 3, 4, 5]
+        
+        // T1 - Mathematical foundation
+        sum_result := ∑(numbers)
+        product_result := ∏(numbers) 
+        integral_confidence := ∫(confidence_function(x)) dx from 0 to 1
+        
+        PRINT "Sum: " + sum_result
+        PRINT "Product: " + product_result
+        PRINT "Integral: " + integral_confidence
+    |||
+    
+    // T3 Compressed version
+    // nums→[1,2,3,4,5] | sum:=Σ(nums) | prod:=∏(nums) | int:=∫₀¹f(x)dx | PRINT sum,prod,int
+    
+    // T4 Ultra-compressed 
+    // [1,2,3,4,5]→Σ∏∫→◉
+    
+    // ===== DATA PROCESSING =====
+    
+    ||| data_analysis |||
+        // Initialize dataset
+        dataset := load_data("sensor_readings.csv")
+        
+        // Statistical analysis
+        ∀ data_point ∈ dataset: {
+            // Calculate moving average
+            moving_avg := ∑(data_point.window) ÷ window_size
+            
+            // Detect patterns
+            ∃ pattern ∈ data_point.features |
+            pattern.strength > detection_threshold →
+                pattern_score := ∫(pattern.intensity) dt
+                
+            // Store results
+            results.append({
+                timestamp: data_point.time,
+                average: moving_avg,
+                pattern_score: pattern_score
+            })
+        }
+        
+        PRINT "Analysis complete: " + results.length + " data points processed"
+    |||
+    
+    // T3 Compressed data analysis
+    // ∀dp∈data: avg:=Σ(dp.win)÷size | ∃pat∈dp.feat: pat.str>θ → score:=∫(pat.int)dt | results.add({ts,avg,score})
+    
+    // T4 Ultra-compressed data analysis
+    // ∀⊗→{◈}
+    
+    // ===== CONDITIONAL LOGIC =====
+    
+    ||| conditional_operations |||
+        ATTN temperature → sensor_reading()
+        ATTN threshold → 25.0
+        
+        // Mathematical condition processing
+        ∀ reading ∈ temperature_history:
+            IF reading > threshold ∧ ∃ trend ∈ rising_patterns →
+                alert_level := "HIGH"
+                EXECUTE emergency_protocol()
+            ELSE IF reading ≈ threshold ± 2.0 →
+                alert_level := "MEDIUM"
+                CONTINUE monitoring_protocol()
+            ELSE →
+                alert_level := "LOW"
+                EXECUTE standard_protocol()
+    |||
+    
+    // T3 Compressed conditional
+    // ∀r∈temp: IF r>θ∧∃↗→alert:="HIGH" | ELIF r≈θ±2→"MED" | ELSE→"LOW"
+    
+    // T4 Ultra-compressed conditional  
+    // ∀r: >θ∧∃↗→◉H | ≈θ→◉M | →◉L
+    
+    // ===== PARALLEL PROCESSING =====
+    
+    ||| parallel_stream_processing |||
+        // Multiple parallel streams with attention
+        ||| stream_1 |||
+            ATTN data_source_1 → fetch_sensor_data("temperature")
+            process_temperature_patterns(data_source_1)
+        |||
+        
+        ||| stream_2 |||  
+            ATTN data_source_2 → fetch_sensor_data("humidity")
+            process_humidity_patterns(data_source_2)
+        |||
+        
+        ||| stream_3 |||
+            ATTN data_source_3 → fetch_sensor_data("pressure") 
+            process_pressure_patterns(data_source_3)
+        |||
+        
+        // Synchronization point
+        AWAIT all_streams_complete()
+        
+        // Combine results with tensor operations
+        combined_analysis := stream_1.result ⊗ stream_2.result ⊗ stream_3.result
+        
+        // Pattern detection
+        ∃ environmental_pattern ∈ combined_analysis |
+        ∫(pattern_strength) dt > emergence_threshold →
+            weather_prediction := predict_weather_change(environmental_pattern)
+            final_forecast := crystallize_prediction(weather_prediction)
+    |||
+    
+    // T3 Compressed parallel
+    // |||temp|humid|press||| → AWAIT all | combined:=⊗results | ∃pattern→predict→forecast
+    
+    // T4 Ultra-compressed parallel
+    // |||⊗||| → ∃→◈
+    
+    // ===== INTER-AGENT COMMUNICATION =====
+    
+    ||| agent_coordination_example |||
+        // Broadcast to multiple agents
+        INTER_AGENT_BROADCAST[weather_analysis_team] → {
+            operation: "environmental_pattern_analysis",
+            priority: "MEDIUM",
+            timestamp: current_timestamp(),
+            data: {
+                temperature_trends: stream_1.patterns,
+                humidity_correlations: stream_2.patterns, 
+                pressure_derivatives: ∂pressure/∂time
+            }
+        }
+        
+        // Wait for consensus
+        AWAIT agent_consensus_threshold(0.85)
+        
+        // Execute coordinated action
+        ∀ agent ∈ weather_analysis_team:
+            agent.execute_weather_protocol(final_forecast)
+    |||
+    
+    // T3 Compressed inter-agent
+    // BROADCAST[team]→{op:"analyze",data:patterns} | AWAIT 0.85 | ∀agent.exec(forecast)
+    
+    // T4 Ultra-compressed inter-agent
+    // →[team]{◉analyze} | ≥0.85 | ∀⟳
+    
+    // ===== MATHEMATICAL OPTIMIZATION =====
+    
+    ||| optimization_example |||
+        // Define optimization problem
+        objective_function := minimize(cost_function(parameters))
+        constraints := [
+            ∑(resource_usage) ≤ available_resources,
+            ∀ parameter ∈ parameters: parameter ≥ 0,
+            ∫(efficiency_metric) dt > minimum_efficiency
+        ]
+        
+        // Gradient descent optimization
+        learning_rate := 0.01
+        ⟲ optimization_loop := {
+            // Calculate gradients
+            gradients := ∂cost_function/∂parameters
+            
+            // Update parameters
+            ∀ parameter ∈ parameters:
+                parameter := parameter - (learning_rate × gradients[parameter])
+            
+            // Check convergence
+            cost_change := |previous_cost - current_cost|
+            IF cost_change < convergence_threshold →
+                BREAK optimization_loop
+        }
+        
+        PRINT "Optimization complete. Final cost: " + current_cost
+    |||
+    
+    // T3 Compressed optimization
+    // obj:=min(cost(params)) | constrs:=[Σ≤res,∀p≥0,∫eff>min] | lr:=0.01 | ⟲{∂cost→update | |Δ|<θ→BREAK}
+    
+    // T4 Ultra-compressed optimization
+    // min(⊗)→∂→⟲{<θ→◉}
+    
+    // ===== LEARNING AND ADAPTATION =====
+    
+    ||| adaptive_behavior |||
+        learning_rate := 0.01
+        performance_history := []
+        
+        ⟲ learning_loop := {
+            // Measure current performance
+            current_performance := evaluate_decision_quality()
+            performance_history.append(current_performance)
+            
+            // Calculate performance gradient
+            performance_gradient := ∂performance/∂decision_parameters
+            
+            // Update decision weights
+            ∀ parameter ∈ decision_parameters:
+                parameter := parameter + (learning_rate × performance_gradient)
+            
+            // Check for convergence
+            performance_variance := calculate_variance(performance_history[-10:])
+            
+            IF performance_variance < convergence_threshold →
+                learned_behavior := crystallize_current_parameters()
+                BREAK learning_loop
+            
+            // Exploration vs exploitation balance
+            exploration_factor := balance_exploration_exploitation()
+            add_exploration_noise(decision_parameters, exploration_factor)
+        }
+        
+        PRINT "Learning complete. Final performance: " + current_performance
+    |||
+    
+    // T3 Compressed learning
+    // lr:=0.01 | ⟲{eval→hist | ∂perf/∂params→update | IF var<θ→learned | explore} | PRINT final
+    
+    // T4 Ultra-compressed learning  
+    // ⟲{∂→update|<θ→◉|⊕}→◉
+|||
+
+// ===== COMPRESSION COMPARISON SUMMARY =====
+
+||| compression_demonstration |||
+    // Same operation at all three levels:
+    
+    // T1 - Mathematical Foundation (Human Readable)
+    ∀ data_point ∈ distributed_dataset: {
+        ∃ pattern ∈ data_point.features |
+        ∫(pattern.strength) dt > analysis_threshold →
+        data_point.score := ∑(weighted_analysis ⊗ feature_importance)
+    }
+    
+    // T3 - Intermediate Compression  
+    ∀dp∈data: ∃pat∈dp.feat | ∫(pat)dt>θ → dp.score:=Σ(analysis⊗importance)
+    
+    // T4 - Ultra-Compressed
+    ∀⊗→Σ◈
+    
+    // Compression Stats:
+    // T1: 47 tokens
+    // T3: 16 tokens (66% compression)  
+    // T4: 5 tokens (89% compression from T1, 69% from T3)
+|||

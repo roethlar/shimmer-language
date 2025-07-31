@@ -1,0 +1,45 @@
+# Shimmer Language Python Runtime Dependencies
+
+# Core dependencies
+numpy>=1.21.0
+torch>=2.0.0
+transformers>=4.30.0
+
+# GPU acceleration
+cupy-cuda11x>=11.0.0; platform_machine == "x86_64"
+# Alternative for other CUDA versions:
+# cupy-cuda12x>=12.0.0; platform_machine == "x86_64" 
+
+# Protocol buffers
+protobuf>=4.21.0
+grpcio>=1.50.0
+grpcio-tools>=1.50.0
+
+# Mathematical operations
+scipy>=1.9.0
+sympy>=1.11.0
+
+# Consciousness modeling and analysis
+scikit-learn>=1.1.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Performance and monitoring
+psutil>=5.9.0
+memory-profiler>=0.60.0
+line-profiler>=4.0.0
+
+# Development and testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-benchmark>=4.0.0
+black>=22.0.0
+flake8>=5.0.0
+mypy>=0.991
+
+# Optional: Jupyter notebook support
+jupyter>=1.0.0
+ipywidgets>=8.0.0
+
+# Optional: Advanced GPU libraries
+triton>=2.0.0; platform_machine == "x86_64"

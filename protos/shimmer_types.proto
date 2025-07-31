@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package shimmer;
+
+// Core Shimmer data types
+message ShimmerExpression {
+    oneof expression {
+        string literal_string = 1;
+        double literal_number = 2;
+        bool literal_bool = 3;
+        string variable = 4;
+        MathematicalExpression mathematical = 5;
+        ConsciousnessState consciousness = 6;
+        QuantumSuperposition quantum = 7;
+    }
+}
+
+message MathematicalExpression {
+    string symbol = 1; // ∀, ∃, ∑, ∏, ∫, ∂, etc.
+    repeated ShimmerExpression operands = 2;
+}
+
+message ConsciousnessState {
+    optional double uncertainty = 1;
+    optional string focus = 2;
+    map<string, ShimmerExpression> properties = 3;
+}
+
+message QuantumSuperposition {
+    map<string, double> states = 1; // state name -> probability amplitude
+}
+
+message ShimmerStream {
+    string name = 1;
+    repeated ShimmerOperation operations = 2;
+}
+
+message ShimmerOperation {
+    oneof operation {
+        AttentionOperation attention = 1;
+        MathematicalOperation mathematical = 2;
+        ConsciousnessOperation consciousness = 3;
+        QuantumOperation quantum = 4;
+        InterAgentOperation inter_agent = 5;
+        Assignment assignment = 6;
+        PrintOperation print = 7;
+    }
+}
+
+message AttentionOperation {
+    string target = 1;
+    ShimmerExpression source = 2;
+}
+
+message MathematicalOperation {
+    enum MathType {
+        UNIVERSAL_QUANTIFICATION = 0;
+        EXISTENTIAL_QUANTIFICATION = 1;
+        SUMMATION = 2;
+        PRODUCT = 3;
+        INTEGRATION = 4;
+        PARTIAL_DERIVATIVE = 5;
+    }
+    
+    MathType type = 1;
+    string variable = 2;
+    ShimmerExpression domain = 3;
+    optional ShimmerExpression condition = 4;
+    ShimmerExpression body = 5;
+}
+
+message ConsciousnessOperation {
+    enum ConsciousnessType {
+        AWARENESS_STATE = 0;
+        RECURSIVE_ANALYSIS = 1;
+        EMERGENCE_PATTERN = 2;
+        CRYSTALLIZATION = 3;
+    }
+    
+    ConsciousnessType type = 1;
+    string name = 2;
+    map<string, ShimmerExpression> properties = 3;
+    repeated ShimmerOperation body = 4;
+}
+
+message QuantumOperation {
+    enum QuantumType {
+        SUPERPOSITION = 0;
+        MEASUREMENT = 1;
+        ENTANGLEMENT = 2;
+    }
+    
+    QuantumType type = 1;
+    string name = 2;
+    QuantumSuperposition superposition = 3;
+    string measurement_basis = 4;
+}
+
+message InterAgentOperation {
+    enum InterAgentType {
+        BROADCAST = 0;
+        SEND = 1;
+        AWAIT = 2;
+    }
+    
+    InterAgentType type = 1;
+    repeated string targets = 2;
+    ShimmerExpression message = 3;
+}
+
+message Assignment {
+    string variable = 1;
+    ShimmerExpression value = 2;
+}
+
+message PrintOperation {
+    ShimmerExpression expression = 1;
+}
+
+message ShimmerProgram {
+    repeated ShimmerStream streams = 1;
+    map<string, string> metadata = 2;
+}

@@ -1,0 +1,281 @@
+||| MATHEMATICAL_COMPUTING_EXAMPLES |||
+    // Advanced mathematical operations and data analysis patterns
+    
+    // ===== STATISTICAL ANALYSIS =====
+    
+    ||| statistical_processing |||
+        // Dataset preparation
+        ATTN dataset → load_time_series("financial_data.csv")
+        
+        // Statistical measures with mathematical precision
+        sample_mean := ∑(dataset) ÷ length(dataset)
+        sample_variance := ∑((x - sample_mean)²) ÷ (length(dataset) - 1)
+        standard_deviation := √(sample_variance)
+        
+        // Correlation analysis
+        ∀ variable_pair ∈ cross_product(variables): {
+            correlation_coefficient := calculate_pearson_correlation(variable_pair)
+            
+            IF |correlation_coefficient| > significance_threshold →
+                significant_correlations.append({
+                    variables: variable_pair,
+                    correlation: correlation_coefficient,
+                    p_value: statistical_test(variable_pair)
+                })
+        }
+        
+        // Integration for area under curve
+        distribution_area := ∫(probability_density_function(x)) dx from -∞ to +∞
+        
+        PRINT "Statistical analysis complete"
+        PRINT "Mean: " + sample_mean + ", StdDev: " + standard_deviation
+        PRINT "Significant correlations found: " + length(significant_correlations)
+    |||
+    
+    // T3 Compressed statistical analysis
+    // data→load(csv) | μ:=Σ(data)÷n | σ²:=Σ((x-μ)²)÷(n-1) | ∀pairs: |corr|>θ→sig_corr | ∫pdf(x)dx→area
+    
+    // T4 Ultra-compressed
+    // ∫∑∂→{μ,σ,corr}
+    
+    // ===== OPTIMIZATION ALGORITHMS =====
+    
+    ||| gradient_descent_optimization |||
+        // Multi-dimensional optimization problem
+        parameters := initialize_parameters(dimension: 10)
+        learning_rate := 0.001
+        convergence_tolerance := 1e-6
+        
+        ⟲ optimization_iterations := {
+            // Calculate partial derivatives for all parameters
+            ∀ parameter_i ∈ parameters: {
+                gradient_i := ∂loss_function/∂parameter_i
+                
+                // Apply gradient descent update
+                parameters[i] := parameters[i] - (learning_rate × gradient_i)
+            }
+            
+            // Check convergence with L2 norm
+            gradient_norm := √(∑(gradient_i²))
+            
+            IF gradient_norm < convergence_tolerance →
+                optimal_parameters := parameters
+                BREAK optimization_iterations
+            
+            // Adaptive learning rate
+            IF loss_function(parameters) > previous_loss →
+                learning_rate := learning_rate × 0.9  // Reduce learning rate
+            ELSE →
+                learning_rate := learning_rate × 1.1  // Increase learning rate
+        }
+        
+        PRINT "Optimization converged after " + iteration_count + " iterations"
+        PRINT "Final loss: " + loss_function(optimal_parameters)
+    |||
+    
+    // T3 Compressed optimization
+    // params:=init(10) | lr:=0.001 | ⟲{∀i: ∂loss/∂pi→update | √Σ(∂²)<tol→BREAK | adapt_lr} | PRINT final
+    
+    // T4 Ultra-compressed
+    // ⟲{∂→params|√Σ<ε→◉}
+    
+    // ===== SIGNAL PROCESSING =====
+    
+    ||| fourier_transform_analysis |||
+        // Load signal data
+        ATTN signal_data → load_audio_file("input_signal.wav")
+        sample_rate := 44100
+        
+        // Discrete Fourier Transform computation
+        frequency_domain := []
+        ∀ k ∈ range(0, length(signal_data)): {
+            // Calculate DFT coefficient
+            real_part := ∑(signal_data[n] × cos(2π × k × n / N)) for n in range(N)
+            imaginary_part := -∑(signal_data[n] × sin(2π × k × n / N)) for n in range(N)
+            
+            frequency_domain[k] := complex(real_part, imaginary_part)
+            magnitude_spectrum[k] := √(real_part² + imaginary_part²)
+            phase_spectrum[k] := arctan(imaginary_part / real_part)
+        }
+        
+        // Find dominant frequencies
+        ∃ peak_frequencies ∈ magnitude_spectrum |
+        magnitude_spectrum[peak_frequencies] > detection_threshold →
+            dominant_frequencies := extract_peaks(magnitude_spectrum)
+        
+        // Inverse transform for reconstruction
+        reconstructed_signal := inverse_fourier_transform(frequency_domain)
+        
+        // Error analysis
+        reconstruction_error := ∑((original_signal[n] - reconstructed_signal[n])²)
+        signal_to_noise_ratio := 10 × log₁₀(signal_power / noise_power)
+        
+        PRINT "Signal processing complete"
+        PRINT "Dominant frequencies: " + dominant_frequencies
+        PRINT "SNR: " + signal_to_noise_ratio + " dB"
+    |||
+    
+    // T3 Compressed signal processing
+    // sig→load(wav) | ∀k: DFT[k]:=Σ(sig×cos+i×sin) | |spec|>θ→peaks | IDFT→reconstruct | SNR:=10log(P/N)
+    
+    // T4 Ultra-compressed
+    // ∫⟲→{DFT,IDFT,SNR}
+    
+    // ===== MACHINE LEARNING MATHEMATICS =====
+    
+    ||| neural_network_training |||
+        // Network architecture definition
+        layers := [input_size: 784, hidden: 128, output: 10]
+        weights := initialize_xavier_normal(layers)
+        biases := initialize_zeros(layers)
+        
+        // Training loop with backpropagation
+        ∀ epoch ∈ training_epochs: {
+            epoch_loss := 0
+            
+            ∀ batch ∈ training_batches: {
+                // Forward pass
+                activations := [batch.inputs]
+                ∀ layer_i ∈ layers[1:]: {
+                    z := weights[i] ⊗ activations[i-1] + biases[i]
+                    activations[i] := activation_function(z)
+                }
+                
+                // Loss calculation
+                batch_loss := cross_entropy_loss(activations[-1], batch.targets)
+                epoch_loss := epoch_loss + batch_loss
+                
+                // Backward pass (backpropagation)
+                gradients := []
+                δ := ∂batch_loss/∂activations[-1]
+                
+                ∀ layer_i ∈ reverse(layers[1:]): {
+                    // Calculate gradients
+                    ∂weights[i] := δ ⊗ activations[i-1]ᵀ
+                    ∂biases[i] := δ
+                    
+                    // Propagate error backwards
+                    δ := weights[i]ᵀ ⊗ δ ⊙ ∂activation_function/∂z[i-1]
+                    
+                    // Update parameters
+                    weights[i] := weights[i] - learning_rate × ∂weights[i]
+                    biases[i] := biases[i] - learning_rate × ∂biases[i]
+                }
+            }
+            
+            // Validation and early stopping
+            validation_accuracy := evaluate_model(validation_set)
+            IF validation_accuracy > best_accuracy →
+                best_accuracy := validation_accuracy
+                save_model_checkpoint(weights, biases)
+            
+            PRINT "Epoch " + epoch + ": Loss = " + epoch_loss + ", Val Acc = " + validation_accuracy
+        }
+    |||
+    
+    // T3 Compressed neural network
+    // net:=init_layers | ∀epoch: ∀batch{forward→loss | ∂loss→backprop→update} | val_acc→checkpoint | PRINT metrics
+    
+    // T4 Ultra-compressed
+    // ⟲{⊗→∂→update}→◉
+    
+    // ===== NUMERICAL INTEGRATION =====
+    
+    ||| advanced_integration |||
+        // Multiple integration methods comparison
+        integration_function := lambda(x) { return x² × sin(x) + cos(x³) }
+        integration_bounds := [lower: 0, upper: π]
+        
+        // Trapezoidal rule
+        n_trapezoid := 1000
+        h_trap := (integration_bounds.upper - integration_bounds.lower) / n_trapezoid
+        trapezoid_result := (h_trap/2) × (
+            integration_function(integration_bounds.lower) + 
+            integration_function(integration_bounds.upper) +
+            2 × ∑(integration_function(integration_bounds.lower + i × h_trap)) for i in range(1, n_trapezoid)
+        )
+        
+        // Simpson's rule
+        n_simpson := 1000  // Must be even
+        h_simp := (integration_bounds.upper - integration_bounds.lower) / n_simpson
+        simpson_result := (h_simp/3) × (
+            integration_function(integration_bounds.lower) + 
+            integration_function(integration_bounds.upper) +
+            4 × ∑(integration_function(integration_bounds.lower + (2i-1) × h_simp)) for odd i +
+            2 × ∑(integration_function(integration_bounds.lower + 2i × h_simp)) for even i
+        )
+        
+        // Monte Carlo integration
+        n_monte_carlo := 100000
+        random_samples := generate_uniform_random(n_monte_carlo, integration_bounds)
+        monte_carlo_result := (integration_bounds.upper - integration_bounds.lower) × 
+                             (1/n_monte_carlo) × ∑(integration_function(random_samples))
+        
+        // Adaptive quadrature
+        adaptive_result := adaptive_simpson_quadrature(
+            integration_function, 
+            integration_bounds.lower, 
+            integration_bounds.upper, 
+            tolerance: 1e-8
+        )
+        
+        PRINT "Integration Results Comparison:"
+        PRINT "Trapezoidal: " + trapezoid_result
+        PRINT "Simpson's: " + simpson_result  
+        PRINT "Monte Carlo: " + monte_carlo_result
+        PRINT "Adaptive Quad: " + adaptive_result
+    |||
+    
+    // T3 Compressed integration
+    // f:=λ(x²sin(x)+cos(x³)) | trap:=(h/2)×Σ(f) | simp:=(h/3)×(f₀+f₁+4×Σodd+2×Σeven) | mc:=(b-a)×(1/n)×Σf(rand)
+    
+    // T4 Ultra-compressed
+    // ∫{trap,simp,mc,adapt}→◈
+    
+    // ===== LINEAR ALGEBRA OPERATIONS =====
+    
+    ||| matrix_computations |||
+        // Matrix operations with mathematical precision
+        matrix_A := generate_random_matrix(rows: 100, cols: 100)
+        matrix_B := generate_random_matrix(rows: 100, cols: 100)
+        vector_x := generate_random_vector(size: 100)
+        
+        // Basic matrix operations
+        matrix_sum := matrix_A + matrix_B
+        matrix_product := matrix_A ⊗ matrix_B
+        matrix_transpose := matrix_Aᵀ
+        
+        // Advanced operations
+        determinant := det(matrix_A)
+        trace_value := tr(matrix_A) = ∑(matrix_A[i,i]) for i in diagonal
+        
+        // Eigenvalue decomposition
+        [eigenvalues, eigenvectors] := eigen_decomposition(matrix_A)
+        spectral_radius := max(|eigenvalues|)
+        condition_number := max(eigenvalues) / min(eigenvalues)
+        
+        // Singular Value Decomposition
+        [U, Σ, Vᵀ] := SVD(matrix_A)
+        rank_A := count(σ > tolerance for σ in Σ)
+        
+        // Linear system solving
+        solution_x := solve_linear_system(matrix_A, vector_x)  // Ax = b
+        residual := ||matrix_A ⊗ solution_x - vector_x||₂
+        
+        // Matrix norms
+        frobenius_norm := √(∑∑(matrix_A[i,j]²))
+        operator_norm := max(singular_values(matrix_A))
+        
+        PRINT "Linear Algebra Results:"
+        PRINT "Determinant: " + determinant
+        PRINT "Condition Number: " + condition_number
+        PRINT "Matrix Rank: " + rank_A
+        PRINT "Solution Residual: " + residual
+    |||
+    
+    // T3 Compressed linear algebra
+    // A,B:=rand_matrix | sum:=A+B | prod:=A⊗B | det,tr,eigen,SVD→[U,Σ,V] | solve(Ax=b)→x | ||residual||₂
+    
+    // T4 Ultra-compressed
+    // ⊗{det,tr,eigen,SVD}→◈
+|||

@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package shimmer.gpu;
+
+// GPU Acceleration Service
+service GpuAccelerationService {
+    // Analyze consciousness patterns with GPU acceleration
+    rpc AnalyzeConsciousness(ConsciousnessAnalysisRequest) returns (ConsciousnessAnalysisResponse);
+    
+    // Execute mathematical operations on GPU
+    rpc ExecuteMathematical(MathematicalExecutionRequest) returns (MathematicalExecutionResponse);
+    
+    // Process attention mechanisms
+    rpc ProcessAttention(AttentionProcessingRequest) returns (AttentionProcessingResponse);
+    
+    // Quantum simulation operations
+    rpc SimulateQuantum(QuantumSimulationRequest) returns (QuantumSimulationResponse);
+    
+    // Get GPU status and metrics
+    rpc GetGpuStatus(GpuStatusRequest) returns (GpuStatusResponse);
+}
+
+message ConsciousnessAnalysisRequest {
+    string expression = 1;
+    repeated double agent_states = 2;
+    ConsciousnessConfig config = 3;
+}
+
+message ConsciousnessAnalysisResponse {
+    double consciousness_score = 1;
+    uint32 meta_cognitive_depth = 2;
+    bool recursive_analysis_detected = 3;
+    repeated string awareness_patterns = 4;
+    repeated string emergence_patterns = 5;
+    bool uncertainty_modeling = 6;
+    double confidence_lower = 7;
+    double confidence_upper = 8;
+    double processing_time_ms = 9;
+}
+
+message ConsciousnessConfig {
+    enum Precision {
+        BASIC = 0;
+        ADVANCED = 1;
+        FULL = 2;
+    }
+    
+    Precision precision = 1;
+    bool gpu_accelerated = 2;
+    uint32 batch_size = 3;
+}
+
+message MathematicalExecutionRequest {
+    enum MathOperation {
+        UNIVERSAL_QUANTIFICATION = 0;
+        EXISTENTIAL_QUANTIFICATION = 1;
+        SUMMATION = 2;
+        PRODUCT = 3;
+        INTEGRATION = 4;
+        PARTIAL_DERIVATIVE = 5;
+    }
+    
+    MathOperation operation = 1;
+    repeated double input_data = 2;
+    map<string, double> parameters = 3;
+    bool parallel_execution = 4;
+}
+
+message MathematicalExecutionResponse {
+    oneof result {
+        double scalar_result = 1;
+        VectorResult vector_result = 2;
+        MatrixResult matrix_result = 3;
+    }
+    double processing_time_ms = 4;
+    uint32 operations_per_second = 5;
+}
+
+message VectorResult {
+    repeated double values = 1;
+}
+
+message MatrixResult {
+    repeated VectorResult rows = 1;
+    uint32 rows_count = 2;
+    uint32 cols_count = 3;
+}
+
+message AttentionProcessingRequest {
+    repeated double queries = 1;
+    repeated double keys = 2;
+    repeated double values = 3;
+    uint32 num_heads = 4;
+    uint32 sequence_length = 5;
+    uint32 head_dimension = 6;
+}
+
+message AttentionProcessingResponse {
+    repeated double attention_weights = 1;
+    repeated double output = 2;
+    double processing_time_ms = 3;
+}
+
+message QuantumSimulationRequest {
+    enum QuantumOperation {
+        SUPERPOSITION_CREATE = 0;
+        SUPERPOSITION_MEASURE = 1;
+        ENTANGLEMENT_CREATE = 2;
+        QUANTUM_EVOLUTION = 3;
+    }
+    
+    QuantumOperation operation = 1;
+    repeated QuantumState initial_states = 2;
+    string measurement_basis = 3;
+    uint32 num_qubits = 4;
+    double evolution_time = 5;
+}
+
+message QuantumState {
+    map<string, double> amplitudes = 1; // state -> probability amplitude
+    double coherence_time = 2;
+}
+
+message QuantumSimulationResponse {
+    repeated QuantumState final_states = 1;
+    repeated double measurement_probabilities = 2;
+    double processing_time_ms = 3;
+}
+
+message GpuStatusRequest {
+    bool include_memory_info = 1;
+    bool include_performance_metrics = 2;
+}
+
+message GpuStatusResponse {
+    enum GpuType {
+        CUDA = 0;
+        METAL = 1;
+        ROCM = 2;
+        CPU_FALLBACK = 3;
+    }
+    
+    GpuType gpu_type = 1;
+    string device_name = 2;
+    uint64 total_memory_bytes = 3;
+    uint64 available_memory_bytes = 4;
+    double utilization_percent = 5;
+    double temperature_celsius = 6;
+    uint32 compute_units = 7;
+    repeated string supported_operations = 8;
+    PerformanceMetrics performance = 9;
+}
+
+message PerformanceMetrics {
+    double consciousness_ops_per_second = 1;
+    double mathematical_ops_per_second = 2;
+    double attention_ops_per_second = 3;
+    double quantum_ops_per_second = 4;
+    double average_latency_ms = 5;
+    double peak_throughput = 6;
+}

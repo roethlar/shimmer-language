@@ -1,0 +1,136 @@
+# Advanced Learning and Adaptation Example
+# Demonstrates Shimmer's learning capabilities and meta-programming
+
+STREAM performance_tracking {
+    # Historical performance analysis
+    ATTENTION past_performance → {
+        throughput_history: MEMORY("throughput_samples"),
+        error_rate_history: MEMORY("error_samples"),
+        strategy_success_rates: MEMORY("strategy_performance")
+    }
+    
+    ATTENTION pattern_recognition → {
+        file_type_patterns: DETECT_PATTERNS(file_statistics),
+        timing_patterns: DETECT_PATTERNS(sync_schedules),
+        network_patterns: DETECT_PATTERNS(network_conditions)
+    }
+}
+
+STREAM adaptive_weighting {
+    # Dynamic weight adjustment based on recent performance
+    ATTENTION recent_feedback → {
+        last_sync_performance: RECENT(performance_metrics, 1),
+        trend_analysis: TREND(performance_metrics, 10),
+        variance_measure: VARIANCE(performance_metrics, 20)
+    }
+    
+    ATTENTION weight_adaptation → {
+        success_reinforcement: IF recent_feedback.success THEN 1.1 ELSE 0.9,
+        exploration_factor: IF variance_measure < 0.1 THEN 1.05 ELSE 0.95,
+        convergence_detection: STABILITY(strategy_weights, 5)
+    }
+}
+
+# Meta-programming operations for self-improvement
+⟳ OPTIMIZE strategy_selection FOR {
+    primary_metric: "throughput_mbps",
+    secondary_metric: "files_per_second",
+    penalty_metric: "error_rate"
+}
+
+⟴ EVOLVE attention_mechanisms FOR {
+    target: "pattern_recognition",
+    mutation_rate: 0.1,
+    selection_pressure: "performance_improvement"
+}
+
+⬆ EMERGE new_insights WHEN {
+    performance_anomaly: DETECT_OUTLIERS(recent_performance, 3.0),
+    pattern_shift: DETECT_CHANGE_POINTS(file_patterns, 0.8),
+    strategy_inefficiency: DETECT_SUBOPTIMAL(strategy_usage, 0.15)
+}
+
+⭐ CRYSTALLIZE successful_adaptations WHEN {
+    stability: convergence_detection > 0.9,
+    performance: average_performance > baseline * 1.1,
+    consistency: variance_measure < 0.05
+}
+
+# Advanced conditional logic with learning
+WHEN EMERGE pattern_shift DETECTED THEN {
+    STREAM adaptation_response {
+        ATTENTION context_analysis → {
+            shift_magnitude: MEASURE_CHANGE(file_patterns),
+            affected_strategies: IDENTIFY_IMPACT(strategy_performance),
+            adaptation_urgency: ASSESS_PRIORITY(performance_delta)
+        }
+        
+        ⟳ OPTIMIZE affected_strategies FOR rapid_adaptation
+        ⟴ EVOLVE pattern_recognition FOR new_context
+        
+        ATTENTION validation → {
+            adaptation_effectiveness: VALIDATE_IMPROVEMENT(5),
+            rollback_threshold: performance_degradation > 0.2
+        }
+        
+        WHEN validation.rollback_threshold THEN {
+            REVERT_TO_CRYSTALLIZED(last_stable_configuration)
+        }
+    }
+}
+
+# Learning from mistakes
+WHEN error_rate > 0.05 THEN {
+    STREAM error_analysis {
+        ATTENTION error_categorization → {
+            network_errors: FILTER_ERRORS("network"),
+            file_system_errors: FILTER_ERRORS("filesystem"), 
+            strategy_errors: FILTER_ERRORS("strategy")
+        }
+        
+        ATTENTION corrective_learning → {
+            strategy_penalty: PENALIZE_STRATEGY(current_strategy, 0.8),
+            alternative_boost: BOOST_ALTERNATIVES(error_context, 1.1),
+            pattern_update: UPDATE_ERROR_PATTERNS(error_categorization)
+        }
+        
+        ⟳ OPTIMIZE error_prevention FOR robustness
+        ⭐ CRYSTALLIZE error_recovery_patterns
+    }
+}
+
+# Multi-objective optimization
+STREAM multi_objective_balance {
+    ATTENTION objective_weights → {
+        speed_weight: USER_PREFERENCE("speed", 0.4),
+        reliability_weight: USER_PREFERENCE("reliability", 0.4),
+        resource_weight: USER_PREFERENCE("resource_usage", 0.2)
+    }
+    
+    ATTENTION pareto_optimization → {
+        speed_score: throughput_mbps / max_observed_throughput,
+        reliability_score: (1.0 - error_rate),
+        resource_score: (1.0 - cpu_usage / 100.0),
+        combined_score: speed_score * speed_weight + 
+                       reliability_score * reliability_weight +
+                       resource_score * resource_weight
+    }
+    
+    ⟳ OPTIMIZE pareto_optimization FOR combined_score
+}
+
+# Output enriched with learning insights
+OUTPUT adaptive_strategy: {
+    primary_strategy: BEST_STRATEGY(strategy_scores),
+    confidence: CONFIDENCE_MEASURE(strategy_selection),
+    learning_state: {
+        adaptation_count: COUNT(recent_adaptations),
+        convergence_status: convergence_detection,
+        exploration_vs_exploitation: exploration_factor
+    },
+    meta_insights: {
+        emerged_patterns: RECENT_EMERGENCES(3),
+        crystallized_knowledge: STABLE_PATTERNS(),
+        optimization_trajectory: PERFORMANCE_TREND(10)
+    }
+}
